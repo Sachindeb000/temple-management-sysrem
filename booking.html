@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Puja Booking</title><link rel="stylesheet" href="css/style.css"></head>
+<body><div id="siteHeader"></div>
+<section class="page-banner"><h1>Puja Booking</h1><p>Book a puja for yourself or your family.</p></section>
+<section class="section"><div class="form-card"><h2>Booking Form</h2>
+<form id="bookingForm">
+<label>Name</label><input id="name" required>
+<label>Phone</label><input id="phone" required><label>Email</label><input id="email" type="email" placeholder="your@email.com" required>
+<label>Puja</label><select id="puja" required></select>
+<label>Date</label><input type="date" id="date" required>
+<label>Number of Devotees</label><input type="number" id="people" min="1" value="1" required>
+<button class="btn" type="submit">Submit Booking</button>
+</form></div></section>
+<div id="siteFooter"></div><script src="js/storage.js"></script><script src="js/main.js"></script><script src="js/booking.js"></script></body></html>

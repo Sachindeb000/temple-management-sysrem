@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>User Login | Divine Temple</title><link rel="stylesheet" href="../css/user.css"></head>
+<body class="user-auth-page">
+<div class="auth-wrap">
+  <div class="auth-brand"><a href="../index.html">🛕 Divine Temple</a><span>Temple Management System</span></div>
+  <div class="auth-card">
+    <div class="auth-head"><div class="auth-icon">🙏</div><h1 id="authTitle">Welcome Back</h1><p id="authSubtitle">Sign in to manage your temple activities.</p></div>
+    <div class="tabs"><button class="tab active" id="loginTab">Login</button><button class="tab" id="registerTab">Create Account</button></div>
+    <form id="authForm">
+      <div id="nameGroup" class="field hidden"><label>Full Name</label><input id="name" placeholder="Enter your name"></div>
+      <div class="field"><label>Email</label><input id="email" type="email" placeholder="you@example.com" required></div>
+      <div id="phoneGroup" class="field hidden"><label>Phone *</label><input id="phone" placeholder="+91 XXXXX XXXXX"></div>
+      <div class="field"><label>Password</label><input id="password" type="password" placeholder="Enter password" minlength="4" required></div>
+      <div id="confirmGroup" class="field hidden"><label>Confirm Password</label><input id="confirm" type="password" placeholder="Re-enter password"></div>
+      <button class="auth-button" id="submitBtn">Login</button><p style="text-align:right;margin:8px 0"><a href="forgot-password.html">Forgot Password?</a></p>
+      <div id="authMessage" class="auth-message"></div>
+    </form>
+    <div class="auth-note">Your account is stored locally in this college-project demo.</div>
+    <a class="back-home" href="../index.html">← Back to website</a>
+  </div>
+  <p class="auth-footer">© 2026 Divine Temple · User Portal</p>
+</div>
+<script src="../js/storage.js"></script>
+<script>
+const loginTab=document.getElementById("loginTab"),registerTab=document.getElementById("registerTab"),form=document.getElementById("authForm");
+let mode="login";
+function setMode(m){mode=m;const reg=m==="register";loginTab.classList.toggle("active",!reg);registerTab.classList.toggle("active",reg);
+document.getElementById("authTitle").textContent=reg?"Create Your Account":"Welcome Back";
+document.getElementById("authSubtitle").textContent=reg?"Register to access your temple account.":"Sign in to manage your temple activities.";
+document.getElementById("submitBtn").textContent=reg?"Create Account":"Login";
+["nameGroup","phoneGroup","confirmGroup"].forEach(id=>document.getElementById(id).classList.toggle("hidden",!reg));document.getElementById("authMessage").style.display="none";}
+loginTab.onclick=()=>setMode("login");registerTab.onclick=()=>setMode("register");
+form.onsubmit=e=>{e.preventDefault();const email=document.getElementById("email").value.trim().toLowerCase(),pass=document.getElementById("password").value,msg=document.getElementById("authMessage");
+let users=getData("users");
+if(mode==="register"){const name=document.getElementById("name").value.trim(),phone=document.getElementById("phone").value.trim(),confirm=document.getElementById("confirm").value;
+if(!name){return show("Please enter your name.","error")}if(!phone.replace(/\D/g,"")||phone.replace(/\D/g,"").length<10){return show("Please enter a valid phone number.","error")}if(pass!==confirm){return show("Passwords do not match.","error")}if(users.some(u=>u.email.toLowerCase()===email)){return show("An account with this email already exists.","error")}
+const user={id:uid(),name,email,phone,password:pass,createdAt:new Date().toLocaleString()};users.push(user);saveData("users",users);localStorage.setItem("tms_current_user",JSON.stringify(user));location.href="dashboard.html";
+}else{const user=users.find(u=>u.email.toLowerCase()===email&&u.password===pass);if(!user)return show("Invalid email or password.","error");localStorage.setItem("tms_current_user",JSON.stringify(user));location.href="dashboard.html";}};
+function show(t,c){const m=document.getElementById("authMessage");m.textContent=t;m.className="auth-message "+c;m.style.display="block";}
+</script></body></html>

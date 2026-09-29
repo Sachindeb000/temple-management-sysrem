@@ -1,0 +1,1 @@
+const f=document.getElementById("donationForm");if(f)f.onsubmit=e=>{e.preventDefault();let a=getData("donations");a.push({id:uid(),name:donorName.value,phone:donorPhone.value,amount:amount.value,purpose:purpose.value,createdAt:new Date().toLocaleString()});saveData("donations",a);alert("Donation submitted successfully.");f.reset()};

@@ -1,0 +1,1 @@
+const c=document.getElementById("pujaList");if(c)c.innerHTML=getData("pujas").map(x=>`<div class="card"><h3>🕉️ ${esc(x.name)}</h3><h4>${esc(x.time)}</h4><p>${esc(x.description)}</p><a class="btn" href="booking.html">Book This Puja</a></div>`).join("")||"<p>No puja available.</p>";

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>My Account | Divine Temple</title><link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="../css/user.css"></head>
+<body><div id="siteHeader"></div>
+<section class="page-banner account-banner"><div class="banner-content"><span class="eyebrow">USER PORTAL</span><h1>My Account</h1><p>Manage your profile and view your temple activity.</p></div></section>
+<section class="section account-section">
+<div class="account-grid">
+  <aside class="profile-card"><div class="profile-avatar" id="avatar">🙏</div><h2 id="profileName"></h2><p id="profileEmail"></p><div class="profile-actions"><a class="btn" href="../booking.html">Book a Puja</a><button class="logout-btn" id="logout">Logout</button></div></aside>
+  <div class="account-content">
+    <div class="account-card"><div class="account-card-head"><div><small>PROFILE</small><h2>Account Information</h2></div></div><div class="profile-details"><div><span>Full Name</span><strong id="detailName"></strong></div><div><span>Email</span><strong id="detailEmail"></strong></div><div><span>Phone</span><strong id="detailPhone"></strong></div></div></div>
+    <div class="account-card"><div class="account-card-head"><div><small>ACTIVITY</small><h2>My Puja Bookings</h2></div><a href="../booking.html">+ New Booking</a></div><div id="myBookings"></div></div>
+  </div>
+</div></section>
+<div id="siteFooter"></div><p style="text-align:center;margin:12px 0 24px"><a href="../developer/login.html">🧑‍💻 Developer Login</a></p>
+<script src="../js/storage.js"></script><script src="../js/main.js"></script>
+<script>
+const raw=localStorage.getItem("tms_current_user");if(!raw)location.replace("login.html");else{const u=JSON.parse(raw);document.getElementById("profileName").textContent=u.name;document.getElementById("profileEmail").textContent=u.email;document.getElementById("detailName").textContent=u.name;document.getElementById("detailEmail").textContent=u.email;document.getElementById("detailPhone").textContent=u.phone||"Not provided";
+const b=getData("bookings").filter(x=>x.email===u.email||x.userEmail===u.email||x.name===u.name);const box=document.getElementById("myBookings");box.innerHTML=b.length?b.map(x=>`<div class="booking-row"><div><strong>${esc(x.puja)}</strong><span>📅 ${esc(x.date)} · ${esc(x.people)} devotee(s)</span></div><b class="status">${esc(x.status||"Pending")}</b></div>`).join(""):`<div class="empty-state">No bookings yet. <a href="../booking.html">Book your first puja →</a></div>`;}
+document.getElementById("logout").onclick=()=>{localStorage.removeItem("tms_current_user");location.replace("login.html");};
+</script></body></html>

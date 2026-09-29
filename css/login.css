@@ -1,0 +1,218 @@
+
+:root{
+    --primary:#b45309;
+    --primary-dark:#7c2d12;
+    --gold:#f59e0b;
+    --cream:#fffaf0;
+    --text:#292524;
+    --muted:#78716c;
+    --white:#ffffff;
+    --danger:#b91c1c;
+}
+
+*{box-sizing:border-box}
+
+body.login-page{
+    margin:0;
+    min-height:100vh;
+    font-family:Arial,Helvetica,sans-serif;
+    color:var(--text);
+    background:
+        radial-gradient(circle at 15% 20%, rgba(245,158,11,.18), transparent 28%),
+        radial-gradient(circle at 85% 80%, rgba(180,83,9,.18), transparent 30%),
+        linear-gradient(135deg,#fff7ed,#fffbeb 50%,#fef3c7);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    position:relative;
+    overflow:hidden;
+}
+
+body.login-page::before,
+body.login-page::after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    pointer-events:none;
+}
+
+body.login-page::before{
+    width:300px;
+    height:300px;
+    top:-130px;
+    right:-100px;
+    background:rgba(245,158,11,.12);
+}
+
+body.login-page::after{
+    width:250px;
+    height:250px;
+    bottom:-120px;
+    left:-100px;
+    background:rgba(180,83,9,.10);
+}
+
+.login-container{
+    width:100%;
+    max-width:440px;
+    position:relative;
+    z-index:1;
+}
+
+.login-box{
+    background:rgba(255,255,255,.96);
+    border:1px solid rgba(180,83,9,.15);
+    border-radius:24px;
+    padding:38px;
+    box-shadow:0 24px 70px rgba(120,53,15,.16);
+    backdrop-filter:blur(8px);
+}
+
+.temple-logo{
+    width:78px;
+    height:78px;
+    margin:0 auto 16px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,var(--gold),var(--primary));
+    color:white;
+    font-size:39px;
+    box-shadow:0 10px 25px rgba(180,83,9,.28);
+}
+
+.login-box h1{
+    margin:0;
+    text-align:center;
+    font-size:28px;
+    color:var(--primary-dark);
+}
+
+.login-subtitle{
+    text-align:center;
+    color:var(--muted);
+    margin:8px 0 28px;
+    font-size:14px;
+}
+
+.form-group{margin-bottom:18px}
+
+.form-group label{
+    display:block;
+    margin-bottom:7px;
+    font-size:14px;
+    font-weight:700;
+    color:#44403c;
+}
+
+.input-wrap{position:relative}
+
+.input-icon{
+    position:absolute;
+    left:13px;
+    top:50%;
+    transform:translateY(-50%);
+    font-size:17px;
+}
+
+.login-box input{
+    width:100%;
+    height:48px;
+    border:1px solid #d6d3d1;
+    border-radius:10px;
+    padding:0 14px 0 42px;
+    font-size:15px;
+    outline:none;
+    background:#fff;
+    transition:.2s ease;
+}
+
+.login-box input:focus{
+    border-color:var(--gold);
+    box-shadow:0 0 0 4px rgba(245,158,11,.13);
+}
+
+.login-button{
+    width:100%;
+    height:50px;
+    margin-top:5px;
+    border:0;
+    border-radius:10px;
+    background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+    color:white;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.2s ease;
+    box-shadow:0 8px 18px rgba(124,45,18,.2);
+}
+
+.login-button:hover{
+    transform:translateY(-1px);
+    box-shadow:0 12px 24px rgba(124,45,18,.27);
+}
+
+.login-button:active{transform:translateY(0)}
+
+.login-error{
+    display:none;
+    margin-top:14px;
+    padding:11px 12px;
+    border-radius:9px;
+    background:#fef2f2;
+    color:var(--danger);
+    border:1px solid #fecaca;
+    font-size:13px;
+    text-align:center;
+}
+
+.demo-login{
+    margin-top:20px;
+    padding:12px;
+    border-radius:10px;
+    background:#fffbeb;
+    border:1px dashed #fbbf24;
+    text-align:center;
+    font-size:13px;
+    color:#57534e;
+}
+
+.demo-login strong{color:var(--primary-dark)}
+
+.back-link{
+    display:block;
+    margin-top:22px;
+    text-align:center;
+    color:var(--primary);
+    text-decoration:none;
+    font-size:14px;
+    font-weight:600;
+}
+
+.back-link:hover{text-decoration:underline}
+
+.login-footer{
+    text-align:center;
+    margin-top:20px;
+    color:#a8a29e;
+    font-size:12px;
+}
+
+@media(max-width:520px){
+    body.login-page{padding:16px}
+
+    .login-box{
+        padding:28px 22px;
+        border-radius:18px;
+    }
+
+    .temple-logo{
+        width:68px;
+        height:68px;
+        font-size:32px;
+    }
+
+    .login-box h1{font-size:24px}
+}

@@ -1,0 +1,111 @@
+
+:root{
+ --admin-bg:#f6f7fb;
+ --sidebar:#1f2937;
+ --sidebar-hover:#374151;
+ --primary:#b45309;
+ --primary-dark:#7c2d12;
+ --gold:#f59e0b;
+ --white:#fff;
+ --text:#1f2937;
+ --muted:#6b7280;
+ --border:#e5e7eb;
+ --success:#15803d;
+ --danger:#b91c1c;
+ --warning:#b45309;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--admin-bg);color:var(--text)}
+.admin-layout{min-height:100vh}
+.sidebar{
+ position:fixed;left:0;top:0;bottom:0;width:245px;background:linear-gradient(180deg,#292524,#1c1917);
+ color:#fff;padding:22px 14px;overflow-y:auto;z-index:1000;
+}
+.sidebar h2{font-size:20px;text-align:center;margin:4px 0 24px;color:#fbbf24}
+.sidebar a{display:block;color:#e7e5e4;text-decoration:none;padding:11px 13px;border-radius:8px;margin:4px 0;font-size:14px}
+.sidebar a:hover{background:#44403c;color:#fff}
+.sidebar hr{border:0;border-top:1px solid #44403c;margin:15px 4px}
+.admin-main{margin-left:245px;padding:28px;min-height:100vh}
+.admin-topbar{
+ background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px 22px;
+ display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:22px;
+ box-shadow:0 3px 12px rgba(0,0,0,.04)
+}
+.admin-topbar h1{margin:0;font-size:25px;color:var(--primary-dark)}
+.admin-topbar p{margin:5px 0 0;color:var(--muted);font-size:13px}
+.card,.admin-card{
+ background:#fff;border:1px solid var(--border);border-radius:14px;padding:20px;
+ box-shadow:0 3px 12px rgba(0,0,0,.04);margin-bottom:20px
+}
+.stats-grid,.dashboard-grid{
+ display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-bottom:22px
+}
+.stat-card{
+ background:#fff;border:1px solid var(--border);border-left:4px solid var(--gold);
+ border-radius:12px;padding:18px;box-shadow:0 3px 12px rgba(0,0,0,.04)
+}
+.stat-card h3{margin:0 0 8px;font-size:13px;color:var(--muted)}
+.stat-card .number{font-size:28px;font-weight:700;color:var(--primary-dark)}
+table{width:100%;border-collapse:collapse;background:#fff}
+th,td{padding:12px 10px;border-bottom:1px solid var(--border);text-align:left;font-size:14px;vertical-align:middle}
+th{background:#fafaf9;color:#44403c;font-weight:700}
+tr:hover td{background:#fffbeb}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.form-group{margin-bottom:14px}
+label{display:block;margin-bottom:6px;font-size:13px;font-weight:700}
+input,select,textarea{
+ width:100%;padding:10px 12px;border:1px solid #d6d3d1;border-radius:8px;
+ outline:none;background:#fff;font:inherit
+}
+input:focus,select:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(245,158,11,.12)}
+textarea{min-height:100px;resize:vertical}
+button,.btn{
+ display:inline-block;border:0;border-radius:8px;padding:10px 15px;background:var(--primary);
+ color:#fff;cursor:pointer;font-weight:700;text-decoration:none;font-size:14px
+}
+button:hover,.btn:hover{background:var(--primary-dark)}
+.btn-secondary{background:#57534e}.btn-secondary:hover{background:#292524}
+.btn-success{background:var(--success)}.btn-danger{background:var(--danger)}
+.btn-warning{background:var(--warning)}
+.actions{display:flex;gap:7px;flex-wrap:wrap}
+.badge{display:inline-block;padding:4px 8px;border-radius:999px;font-size:12px;font-weight:700}
+.badge-success{background:#dcfce7;color:#166534}
+.badge-warning{background:#fef3c7;color:#92400e}
+.badge-danger{background:#fee2e2;color:#991b1b}
+.badge-info{background:#dbeafe;color:#1e40af}
+img.admin-thumb{width:70px;height:50px;object-fit:cover;border-radius:7px;border:1px solid var(--border)}
+.empty-state{text-align:center;padding:35px;color:var(--muted)}
+.alert{padding:12px 14px;border-radius:8px;margin-bottom:15px}
+.alert-success{background:#dcfce7;color:#166534}
+.alert-danger{background:#fee2e2;color:#991b1b}
+.mobile-menu{display:none}
+@media(max-width:1000px){
+ .stats-grid,.dashboard-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:760px){
+ .sidebar{position:relative;width:100%;height:auto;min-height:0}
+ .sidebar a{display:inline-block;margin:2px}
+ .admin-main{margin-left:0;padding:15px}
+ .admin-topbar{align-items:flex-start;flex-direction:column}
+ .stats-grid,.dashboard-grid,.form-grid{grid-template-columns:1fr}
+ table{display:block;overflow-x:auto;white-space:nowrap}
+}
+.section-head{display:flex;justify-content:space-between;align-items:center;gap:15px}.muted{color:#6b7280;font-size:13px}.notice-editor{background:#fffbeb;border:1px solid #fed7aa;border-radius:12px;padding:18px;margin:15px 0}.notice-editor h3{margin-top:0}.notice-checks{display:flex;gap:20px;flex-wrap:wrap;margin:10px 0 16px}.notice-checks label{font-weight:600}.notice-checks input{width:auto}.notice-admin-row{display:flex;justify-content:space-between;gap:18px;padding:17px;border:1px solid var(--border);border-radius:12px;margin:10px 0;background:#fff}.notice-row-title{font-weight:800;color:#71320f;font-size:17px}.notice-row-msg{color:#57534e;margin:5px 0;white-space:pre-line}.notice-row-meta{display:flex;gap:7px;align-items:center;margin-top:8px}.dashboard-welcome{background:linear-gradient(120deg,#5b260f,#a94d13);color:#fff;border-radius:16px;padding:24px;margin-bottom:20px}.dashboard-welcome h2{margin:0 0 5px}.quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}.quick-action{background:#fff;border:1px solid var(--border);border-radius:12px;padding:16px;text-decoration:none;color:var(--text);box-shadow:0 3px 12px rgba(0,0,0,.04)}.quick-action strong{display:block;color:#71320f;margin-top:7px}.quick-action:hover{transform:translateY(-2px);border-color:#f59e0b}.dashboard-panels{display:grid;grid-template-columns:1fr 1fr;gap:18px}.dashboard-panel{background:#fff;border:1px solid var(--border);border-radius:14px;padding:20px}.dashboard-panel h3{margin-top:0;color:#71320f}.mini-row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--border)}.mini-row:last-child{border-bottom:0}.mini-muted{color:#6b7280;font-size:12px}@media(max-width:1000px){.quick-grid{grid-template-columns:repeat(2,1fr)}.dashboard-panels{grid-template-columns:1fr}}@media(max-width:650px){.section-head,.notice-admin-row{flex-direction:column}.quick-grid{grid-template-columns:1fr}}
+#featureSelect{min-height:190px;padding:8px}#featureSelect option{padding:8px;font-size:14px}.feature-card p{min-height:48px}
+
+/* Home Page Editor - clear blue selected state for Divine Experience */
+#featureSelect { min-height: 210px; border: 2px solid #d7e3f7; border-radius: 10px; padding: 6px; background: #fff; }
+#featureSelect option { padding: 10px 12px; border-radius: 6px; }
+#featureSelect option:checked { background: #2563eb linear-gradient(0deg,#2563eb,#2563eb); color: #fff; font-weight: 700; }
+#featureSelect:focus { border-color: #2563eb; outline: 3px solid rgba(37,99,235,.15); }
+#clearHeroImage { white-space: nowrap; }
+.dashboard-welcome{display:flex;justify-content:space-between;align-items:center;gap:15px}.overview-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}.overview-strip>div{background:#fff;border:1px solid var(--border);border-radius:12px;padding:16px}.overview-strip strong{display:block;font-size:24px;color:var(--primary-dark)}.overview-strip span{font-size:12px;color:var(--muted)}.dashboard-stat{display:block;text-decoration:none;color:inherit}.dashboard-stat small{color:var(--muted);font-size:11px}@media(max-width:800px){.overview-strip{grid-template-columns:repeat(2,1fr)}.dashboard-welcome{align-items:flex-start;flex-direction:column}}@media(max-width:500px){.overview-strip{grid-template-columns:1fr}}
+
+/* Dashboard website contact overview */
+.dashboard-contact-overview{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}.dashboard-contact-item{padding:14px;border:1px solid #eadccf;border-radius:12px;background:#fff}.dashboard-contact-item span{display:block;color:#777;font-size:12px;margin-bottom:5px}.dashboard-contact-item strong{display:block;word-break:break-word}@media(max-width:800px){.dashboard-contact-overview{grid-template-columns:1fr}}
+
+
+/* Divine Experience selector */
+.feature-choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:10px}.feature-choice{position:relative;display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:14px 16px;background:#fff;border:2px solid #eadccf;border-radius:14px;cursor:pointer;color:var(--text);transition:.18s;box-shadow:0 2px 8px rgba(0,0,0,.03)}.feature-choice:hover{border-color:#f59e0b;transform:translateY(-1px)}.feature-choice.selected{border-color:#2563eb;background:#eff6ff;box-shadow:0 0 0 2px rgba(37,99,235,.08)}.feature-choice-icon{font-size:27px;flex:0 0 34px;text-align:center}.feature-choice-text{display:flex;flex-direction:column;gap:3px;min-width:0}.feature-choice-text strong{color:#71320f;font-size:15px}.feature-choice-text small{color:#6b7280;font-size:11px;line-height:1.35}.feature-choice-check{margin-left:auto;min-width:24px;font-size:19px;font-weight:800}.feature-choice.selected .feature-choice-check{color:#16a34a}@media(max-width:650px){.feature-choice-grid{grid-template-columns:1fr}}
+
+.developer-footer{margin:18px 0;padding:14px;border-top:1px solid #eee;display:flex;align-items:center;gap:10px}

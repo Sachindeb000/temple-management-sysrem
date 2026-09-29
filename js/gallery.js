@@ -1,0 +1,1 @@
+const c=document.getElementById("galleryList");if(c)c.innerHTML=getData("gallery").map(x=>`<div class="gallery-item"><img src="${esc(x.image)}" alt="${esc(x.title)}"><h3>${esc(x.title)}</h3></div>`).join("")||"<p>No gallery images.</p>";

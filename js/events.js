@@ -1,0 +1,1 @@
+const c=document.getElementById("eventList");if(c)c.innerHTML=getData("events").map(x=>`<div class="card"><h3>📅 ${esc(x.name)}</h3><h4>${esc(x.date)}</h4><p>${esc(x.description)}</p></div>`).join("")||"<p>No events available.</p>";
